@@ -7,7 +7,7 @@
 
 Посмотрим на примере отзыва (для удобства возьмите ноутбук, размещенный в папке репозитория):
 
-In [4]: responses[99]
+`In [4]: responses[99]
 Out[4]: {'author': 'ronnichka',
  'bank_license': 'лицензия № 880',
  'bank_name': 'Югра',
@@ -17,7 +17,7 @@ Out[4]: {'author': 'ronnichka',
  'rating_grade': 3,
  'rating_not_checked': False,
  'text': 'Здравствуйте! Хотела написать, что мне месяц не выдают карту ко вкладу, ссылаясь на "нам же их из Самары везут" (на секундочку 5 часов езды от нашего города). Но! Прочитала, что людям 3,5 месяцев не выдают карту, и поняла, что у меня все хорошо, пока что. И подарок мне дали, и кулер в отделении есть. Так что я, конечно, готова ждать. Правда хотелось бы не очень долго.',
- 'title': 'Карта ко вкладу'}
+ 'title': 'Карта ко вкладу'}`
 
 
 ### Часть 1. Анализ текстов
@@ -58,14 +58,14 @@ Out[4]: {'author': 'ronnichka',
 In [5]: from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
 
-# !!! На каждом этапе Pipeline нужно указать свои параметры
-# 1-ый вариант: tf-idf + LSI
-# 2-ой вариант: LDA
+!!! На каждом этапе Pipeline нужно указать свои параметры
+1-ый вариант: tf-idf + LSI
+2-ой вариант: LDA
 
-# clf = Pipeline([
-#     ('vect', CountVectorizer(analyzer = 'char', ngram_range={4,6})),
-#     ('clf', RandomForestClassifier()),
-# ])
+clf = Pipeline([
+    ('vect', CountVectorizer(analyzer = 'char', ngram_range={4,6})),
+    ('clf', RandomForestClassifier()),
+])
 
 clf = Pipeline([ 
     ('vect', CountVectorizer()), 
