@@ -5,19 +5,7 @@
 
 Тексты хранятся в json-ах в массиве responses.
 
-Посмотрим на примере отзыва (для удобства возьмите ноутбук, размещенный в папке репозитория):
-
-`In [4]: responses[99]
-Out[4]: {'author': 'ronnichka',
- 'bank_license': 'лицензия № 880',
- 'bank_name': 'Югра',
- 'city': 'г. Саратов',
- 'datetime': '2015-06-03 20:56:57',
- 'num_comments': 0,
- 'rating_grade': 3,
- 'rating_not_checked': False,
- 'text': 'Здравствуйте! Хотела написать, что мне месяц не выдают карту ко вкладу, ссылаясь на "нам же их из Самары везут" (на секундочку 5 часов езды от нашего города). Но! Прочитала, что людям 3,5 месяцев не выдают карту, и поняла, что у меня все хорошо, пока что. И подарок мне дали, и кулер в отделении есть. Так что я, конечно, готова ждать. Правда хотелось бы не очень долго.',
- 'title': 'Карта ко вкладу'}`
+Посмотрим на примере отзыва: возьмите для удобства ноутбук, размещенный в папке репозитория.
 
 
 ### Часть 1. Анализ текстов
@@ -51,35 +39,6 @@ Out[4]: {'author': 'ronnichka',
 - 2-ой вариант: тематические модели LDA (sklearn.decomposition.LatentDirichletAllocation).
 Используйте accuracy и F-measure для оценки качества классификации.
 
-Ниже написан примерный Pipeline для классификации текстов.
+В ноутбуке, размещенном в папке репозитория. написан примерный Pipeline для классификации текстов.
 
 Эта часть задания может быть сделана с использованием sklearn.
-
-In [5]: from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestClassifier
-
-!!! На каждом этапе Pipeline нужно указать свои параметры
-1-ый вариант: tf-idf + LSI
-2-ой вариант: LDA
-
-clf = Pipeline([
-    ('vect', CountVectorizer(analyzer = 'char', ngram_range={4,6})),
-    ('clf', RandomForestClassifier()),
-])
-
-clf = Pipeline([ 
-    ('vect', CountVectorizer()), 
-    ('tfidf', TfidfTransformer()), 
-    ('tm', TruncatedSVD()), 
-    ('clf', RandomForestClassifier())
-])
----------------------------------------------------------------------------
-NameError                                 Traceback (most recent call last)
-<ipython-input-5-77be54944135> in <module>()
-      4 
-      5 clf = Pipeline([ 
-----> 6     ('vect', CountVectorizer()),
-      7     ('tfidf', TfidfTransformer()),
-      8     ('tm', TruncatedSVD()),
-
-NameError: name 'CountVectorizer' is not defined
